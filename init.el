@@ -73,7 +73,8 @@
     tagedit
 
     ;; git integration
-    magit))
+    magit
+    ))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -145,10 +146,36 @@
  '(coffee-tab-width 2)
  '(package-selected-packages
    (quote
-    (clj-refactor magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
+    (flycheck-pos-tip flycheck-clojure clj-refactor magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(require 'clj-refactor)
+(defun my-clojure-mode-hook ()
+    (clj-refactor-mode 1)
+    (yas-minor-mode 1) ; for adding require/use/import statements
+    ;; This choice of keybinding leaves cider-macroexpand-1 unbound
+    (cljr-add-keybindings-with-prefix "C-c C-m"))
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+
+;; flycheck-clojure
+(eval-after-load 'flycheck '(flycheck-clojure-setup))
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; flycheck-pos-tip
+(eval-after-load 'flycheck
+  '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
+
+(global-linum-mode -1)
+
+(column-number-mode 1)
+
+(toggle-frame-fullscreen)
+
+(global-set-key [C-tab] 'other-window)
+
+;;; init.el ends here
