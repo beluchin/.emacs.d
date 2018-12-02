@@ -10,3 +10,6 @@ auto-save-list
 backups
 melpa-stable
 archive-contents
+elpa/flycheck-*
+elpa/popup-*
+elpa/pos-tip-*
