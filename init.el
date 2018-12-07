@@ -154,9 +154,19 @@
  ;; If there is more than one, they won't work right.
  )
 
+(defun my-hs-minor-mode ()
+  "Turn on 'hs-minor-mode' and related key bindings."
+  (hs-minor-mode)
+  (local-set-key (kbd "C-+") 'hs-show-all)
+  (local-set-key (kbd "C-_") 'hs-hide-all)
+  (local-set-key (kbd "C-=") 'hs-show-block)
+  (local-set-key (kbd "C--") 'hs-hide-block)
+  (local-set-key (kbd "C-.") 'hs-toggle-hiding))
+
 (require 'clj-refactor)
 (defun my-clojure-mode-hook ()
     (clj-refactor-mode 1)
+    (my-hs-minor-mode)
     (yas-minor-mode 1) ; for adding require/use/import statements
     ;; This choice of keybinding leaves cider-macroexpand-1 unbound
     (cljr-add-keybindings-with-prefix "C-c C-m"))
@@ -177,5 +187,9 @@
 (toggle-frame-fullscreen)
 
 (global-set-key [C-tab] 'other-window)
+
+(tool-bar-mode -1)
+
+(menu-bar-mode 1)
 
 ;;; init.el ends here
