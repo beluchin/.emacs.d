@@ -192,4 +192,7 @@
 
 (menu-bar-mode 1)
 
+;; save before compile
+(setq cider-save-file-on-load t)
+
 ;;; init.el ends here
