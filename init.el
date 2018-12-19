@@ -192,7 +192,23 @@
 
 (menu-bar-mode 1)
 
+;; cider
+;; ---
 ;; save before compile
 (setq cider-save-file-on-load t)
+;; Don't warn me about the dangers of clj-refactor, fire the missiles!
+(setq cljr-warn-on-eval nil)
+
+;; projectile
+(require 'projectile)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(projectile-mode +1)
+
+(server-start) ;; to support emacsclient calls
+
+(toggle-truncate-lines)
+
+(setq-default tab-width 4)
 
 ;;; init.el ends here

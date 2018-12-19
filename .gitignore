@@ -13,3 +13,5 @@ archive-contents
 elpa/flycheck-*
 elpa/popup-*
 elpa/pos-tip-*
+server/
+*backup*
