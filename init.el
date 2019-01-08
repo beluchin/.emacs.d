@@ -163,10 +163,16 @@
   (local-set-key (kbd "C--") 'hs-hide-block)
   (local-set-key (kbd "C-.") 'hs-toggle-hiding))
 
+;; 80 character flag
+;; https://emacs.stackexchange.com/a/14066/21012
+(setq-default whitespace-line-column 80
+              whitespace-style '(face lines-tail))
+
 (require 'clj-refactor)
 (defun my-clojure-mode-hook ()
     (clj-refactor-mode 1)
     (my-hs-minor-mode)
+    (whitespace-mode)  ; 80 char visual mark
     (yas-minor-mode 1) ; for adding require/use/import statements
     ;; This choice of keybinding leaves cider-macroexpand-1 unbound
     (cljr-add-keybindings-with-prefix "C-c C-m"))
