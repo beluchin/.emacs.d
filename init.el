@@ -146,7 +146,7 @@
  '(coffee-tab-width 2)
  '(package-selected-packages
    (quote
-    (flycheck-pos-tip flycheck-clojure clj-refactor magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
+    (clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -173,6 +173,7 @@
     (clj-refactor-mode 1)
     (my-hs-minor-mode)
     (whitespace-mode)  ; 80 char visual mark
+    (if (eq system-type 'darwin) (text-scale-increase 1))
     (yas-minor-mode 1) ; for adding require/use/import statements
     ;; This choice of keybinding leaves cider-macroexpand-1 unbound
     (cljr-add-keybindings-with-prefix "C-c C-m"))
