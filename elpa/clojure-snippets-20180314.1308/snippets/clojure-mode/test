@@ -1,0 +1,6 @@
+# name: test
+# key: test
+# --
+(t/deftest $1
+  (t/is (= $2))$>
+  $0)$>

@@ -143,10 +143,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(clojure-indent-style (quote align-arguments))
  '(coffee-tab-width 2)
  '(package-selected-packages
    (quote
-    (clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
+    (dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -217,5 +218,21 @@
 (toggle-truncate-lines)
 
 (setq-default tab-width 4)
+
+;;; switch to last buffer
+(global-set-key (kbd "C-c b") #'mode-line-other-buffer)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; abbreviations
+;; http://pragmaticemacs.com/emacs/use-abbreviations-to-expand-text/
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq-default abbrev-mode t)
+;; save abbreviations upon exiting xemacs
+(setq save-abbrevs t)
+;; set the file storing the abbreviations
+(setq abbrev-file-name "~/.emacs.d/docs/my-abbreviations.el")
+;; reads the abbreviations file on startup
+(quietly-read-abbrev-file)
 
 ;;; init.el ends here
