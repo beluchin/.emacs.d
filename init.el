@@ -6,14 +6,14 @@
 (require 'package)
 (add-to-list 'package-archives
              '("tromey" . "http://tromey.com/elpa/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;;(add-to-list 'package-archives '("melpa" . "https://melpa.milkbox.net/packages/") t)
 
-(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
-(add-to-list 'package-pinned-packages '(flycheck . "melpa-stable") t)
-(add-to-list 'package-pinned-packages '(flycheck-clojure . "melpa-stable") t)
-(add-to-list 'package-pinned-packages '(magit . "melpa-stable") t)
+;;(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+;;(add-to-list 'package-pinned-packages '(flycheck . "melpa-stable") t)
+;;(add-to-list 'package-pinned-packages '(flycheck-clojure . "melpa-stable") t)
+;;(add-to-list 'package-pinned-packages '(magit . "melpa-stable") t)
 
 
 ;; Load and activate emacs packages. Do this first so that the
@@ -77,6 +77,8 @@
     magit
 
     flycheck-clojure
+
+    flycheck-pos-tip
 
     use-package
     ))
@@ -152,7 +154,10 @@
  '(coffee-tab-width 2)
  '(package-selected-packages
    (quote
-    (dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell use-package))))
+    (dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip
+                              flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex
+                              ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode
+                              paredit exec-path-from-shell use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -185,14 +190,6 @@
     (cljr-add-keybindings-with-prefix "C-c C-m"))
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 
-;; flycheck-clojure
-(eval-after-load 'flycheck '(flycheck-clojure-setup))
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
-;; flycheck-pos-tip
-(eval-after-load 'flycheck
-  '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
-
 (global-linum-mode -1)
 
 (column-number-mode 1)
@@ -224,8 +221,7 @@
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package flycheck :ensure t)
-(use-package flycheck-pos-tip :ensure t
-  :after flycheck)
+(use-package flycheck-pos-tip :ensure t :after flycheck)
   
 ;; save before compile
 (setq cider-save-file-on-load t)
