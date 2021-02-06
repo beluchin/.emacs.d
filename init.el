@@ -7,8 +7,7 @@
 (add-to-list 'package-archives
              '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 ;;(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 ;;(add-to-list 'package-pinned-packages '(flycheck . "melpa-stable") t)
@@ -79,6 +78,8 @@
     flycheck-clojure
 
     flycheck-pos-tip
+
+    clj-refactor
 
     use-package
     ))
