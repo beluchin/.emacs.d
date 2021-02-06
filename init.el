@@ -7,11 +7,12 @@
 (add-to-list 'package-archives
              '("tromey" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.milkbox.net/packages/") t)
 
 (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(flycheck . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(flycheck-clojure . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(magit . "melpa-stable") t)
 
 
@@ -74,6 +75,10 @@
 
     ;; git integration
     magit
+
+    flycheck-clojure
+
+    use-package
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -147,7 +152,7 @@
  '(coffee-tab-width 2)
  '(package-selected-packages
    (quote
-    (dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
+    (dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -202,6 +207,26 @@
 
 ;; cider
 ;; ---
+(use-package cider
+  :ensure t :defer t
+  :config
+  (setq
+    cider-repl-history-file ".cider-repl-history"  ;; not squiggly-related, but I like it
+    nrepl-log-messages t)                          ;; not necessary, but useful for trouble-shooting
+  (flycheck-clojure-setup))  ;; run setup *after* cider load
+
+(use-package flycheck-clojure
+  :defer t
+  :commands (flycheck-clojure-setup)               ;; autoload
+  :config
+  (eval-after-load 'flycheck
+    '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
+(use-package flycheck :ensure t)
+(use-package flycheck-pos-tip :ensure t
+  :after flycheck)
+  
 ;; save before compile
 (setq cider-save-file-on-load t)
 ;; Don't warn me about the dangers of clj-refactor, fire the missiles!
