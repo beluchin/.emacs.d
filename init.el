@@ -82,6 +82,10 @@
     clj-refactor
 
     use-package
+    
+    solarized-theme
+
+    super-save
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -151,14 +155,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(clojure-indent-style (quote align-arguments))
+ '(clojure-indent-style 'align-arguments)
  '(coffee-tab-width 2)
+ '(custom-safe-themes
+   '("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" default))
  '(package-selected-packages
-   (quote
-    (dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip
-                              flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex
-                              ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode
-                              paredit exec-path-from-shell use-package))))
+   '(solarized-theme dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -189,7 +191,8 @@
     (yas-minor-mode 1) ; for adding require/use/import statements
     ;; This choice of keybinding leaves cider-macroexpand-1 unbound
     (cljr-add-keybindings-with-prefix "C-c C-m"))
-(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook
+          #'whitespace-mode)
 
 (global-linum-mode -1)
 
@@ -235,6 +238,11 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (projectile-mode +1)
 
+(use-package super-save
+  :ensure t
+  :config
+  (super-save-mode +1))
+
 (server-start) ;; to support emacsclient calls
 
 (toggle-truncate-lines)
@@ -244,6 +252,11 @@
 ;;; switch to last buffer
 (global-set-key (kbd "C-c b") #'mode-line-other-buffer)
 
+(load-theme 'solarized-light-high-contrast t)
+
+(setq-default cursor-type '(bar . 3))
+(blink-cursor-mode 1)
+(set-cursor-color "SystemRedColor")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; abbreviations
