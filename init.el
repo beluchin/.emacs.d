@@ -187,6 +187,7 @@
     (cljr-add-keybindings-with-prefix "C-c C-m"))
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook
           #'whitespace-mode)
+(add-hook 'cider-repl-mode-hook #'my-hs-minor-mode)
 
 (global-linum-mode -1)
 
