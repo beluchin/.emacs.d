@@ -21,7 +21,7 @@
   (package-refresh-contents))
 
 ;; Define he following variables to remove the compile-log warnings
-;; when defining ido-ubiquitous
+;; when defining ido-ubiquitous0
 ;; (defvar ido-cur-item nil)
 ;; (defvar ido-default-item nil)
 ;; (defvar ido-cur-list nil)
@@ -154,7 +154,7 @@
  '(custom-safe-themes
    '("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" default))
  '(package-selected-packages
-   '(solarized-theme dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell use-package)))
+   '(dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -185,8 +185,7 @@
     (yas-minor-mode 1) ; for adding require/use/import statements
     ;; This choice of keybinding leaves cider-macroexpand-1 unbound
     (cljr-add-keybindings-with-prefix "C-c C-m"))
-(add-hook 'clojure-mode-hook #'my-clojure-mode-hook
-          #'whitespace-mode)
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 (add-hook 'cider-repl-mode-hook #'my-hs-minor-mode)
 
 (global-linum-mode -1)

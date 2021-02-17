@@ -63,25 +63,19 @@ See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-add-import-to-ns
 (autoload 'cljr-require-macro "clj-refactor" "\
 Add a require statement for a macro to the ns form in current buffer.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-require-macro
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-require-macro" t nil)
 
 (autoload 'cljr-stop-referring "clj-refactor" "\
 Stop referring to vars in the namespace at point.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-stop-referring
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-stop-referring" t nil)
 
 (autoload 'cljr-move-form "clj-refactor" "\
 Move the form containing POINT to a new namespace.
 
 If REGION is active, move all forms contained by region.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-move-form
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-move-form" t nil)
 
 (autoload 'cljr-add-declaration "clj-refactor" "\
 Add a declare for the current def near the top of the buffer.
@@ -97,26 +91,20 @@ Extract form at (or above) point as a constant.
 Create a def for it at the top level, and replace its current
 occurrence with the defined name.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-extract-constant
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-extract-constant" t nil)
 
 (autoload 'cljr-extract-def "clj-refactor" "\
 Extract form at (or above) point as a def.
 Create a def for it at the top level, and replace its current
 occurrence with the defined name.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-extract-def
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-extract-def" t nil)
 
 (autoload 'cljr-cycle-thread "clj-refactor" "\
 Cycle a threading macro between -> and ->>.
 Also applies to other versions of the macros, like cond->.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-cycle-thread
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-cycle-thread" t nil)
 
 (autoload 'cljr-introduce-let "clj-refactor" "\
 Create a let form, binding the form at point.
@@ -129,25 +117,19 @@ See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-introduce-let
 (autoload 'cljr-expand-let "clj-refactor" "\
 Expand the let form above point by one level.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-expand-let
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-expand-let" t nil)
 
 (autoload 'cljr-move-to-let "clj-refactor" "\
 Move the form at point to a binding in the nearest let.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-move-to-let
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-move-to-let" t nil)
 
 (autoload 'cljr-destructure-keys "clj-refactor" "\
 Change a symbol binding at point to a destructuring bind.
 Keys to use in the destructuring are inferred from the code, and
 their usage is replaced with the new local variables.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-destructure-keys
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-destructure-keys" t nil)
 
 (autoload 'cljr-raise-sexp "clj-refactor" "\
 Like paredit-raise-sexp, but removes # in front of function literals and sets.
@@ -171,24 +153,18 @@ Inserts / as normal, but also checks for common namespace shorthands to require.
 If `cljr-magic-require-namespaces' is non-nil, typing one of the
 short aliases listed in `cljr-magic-requires' followed by this
 command will add the corresponding require statement to the ns
-form.
-
-\(fn)" t nil)
+form." t nil)
 
 (autoload 'cljr-project-clean "clj-refactor" "\
 Run `cljr-project-clean-functions' on every clojure file, then
 sorts the project's dependency vectors.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-project-clean
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-project-clean" t nil)
 
 (autoload 'cljr-sort-project-dependencies "clj-refactor" "\
 Sorts all dependency vectors in project.clj
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-sort-project-dependencies
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-sort-project-dependencies" t nil)
 
 (autoload 'cljr-add-project-dependency "clj-refactor" "\
 Add a dependency to the project.clj file.
@@ -205,9 +181,7 @@ Update the version of the dependency at point.
 (autoload 'cljr-update-project-dependencies "clj-refactor" "\
 Update all project dependencies.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-update-project-dependencies
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-update-project-dependencies" t nil)
 
 (autoload 'cljr-promote-function "clj-refactor" "\
 Promote a function literal to an fn, or an fn to a defn.
@@ -221,9 +195,7 @@ See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-promote-function
 (autoload 'cljr-find-usages "clj-refactor" "\
 Find all usages of the symbol at point in the project.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-find-usages
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-find-usages" t nil)
 
 (autoload 'cljr-rename-symbol "clj-refactor" "\
 Rename the symbol at point and all of its occurrences.
@@ -235,9 +207,7 @@ See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-rename-symbol
 (autoload 'cljr-clean-ns "clj-refactor" "\
 Clean the ns form for the current buffer.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-clean-ns
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-clean-ns" t nil)
 
 (autoload 'cljr-add-missing-libspec "clj-refactor" "\
 Requires or imports the symbol at point.
@@ -245,49 +215,34 @@ Requires or imports the symbol at point.
 If the symbol at point is of the form str/join then the ns
 containing join will be aliased to str.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-add-missing-libspec
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-add-missing-libspec" t nil)
 
 (autoload 'cljr-hotload-dependency "clj-refactor" "\
 Download a dependency (if needed) and hotload it into the current repl session.
 
 Defaults to the dependency vector at point, but prompts if none is found.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-hotload-dependency
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-hotload-dependency" t nil)
 
 (autoload 'cljr-extract-function "clj-refactor" "\
 Extract the form at (or above) point as a top-level defn.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-extract-function
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-extract-function" t nil)
 
 (autoload 'cljr-add-stubs "clj-refactor" "\
 Adds implementation stubs for the interface or protocol at point.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-add-stubs
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-add-stubs" t nil)
 
 (autoload 'cljr-inline-symbol "clj-refactor" "\
 Inline the symbol at point.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-inline-symbol
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-inline-symbol" t nil)
 
 (autoload 'cljr-version "clj-refactor" "\
-Returns the version of the middleware as well as this package.
+Returns the version of the middleware as well as this package." t nil)
 
-\(fn)" t nil)
-
-(autoload 'cljr-toggle-debug-mode "clj-refactor" "\
-
-
-\(fn)" t nil)
+(autoload 'cljr-toggle-debug-mode "clj-refactor" nil t nil)
 
 (autoload 'cljr-create-fn-from-example "clj-refactor" "\
 Create a top-level defn for the symbol at point.
@@ -299,9 +254,7 @@ For instance, if the symbol is the first argument of a `map'
 call, the defn is created with one argument. If it is the first
 argument of a `reduce', the defn will take two arguments.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-create-fn-from-example
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-create-fn-from-example" t nil)
 
 (autoload 'cljr-describe-refactoring "clj-refactor" "\
 Show the wiki page, in emacs, for one of the available refactorings.
@@ -313,9 +266,7 @@ See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-describe-refacto
 (autoload 'cljr-change-function-signature "clj-refactor" "\
 Change the function signature of the function at point.
 
-See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-change-function-signature
-
-\(fn)" t nil)
+See: https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-change-function-signature" t nil)
 
 (autoload 'cljr--inject-middleware-p "clj-refactor" "\
 Return non-nil if nREPL middleware should be injected.
@@ -324,20 +275,23 @@ Return non-nil if nREPL middleware should be injected.
 
 (autoload 'cljr--inject-jack-in-dependencies "clj-refactor" "\
 Inject the REPL dependencies of clj-refactor at `cider-jack-in'.
-If injecting the dependencies is not preferred set `cljr-inject-dependencies-at-jack-in' to nil.
-
-\(fn)" nil nil)
+If injecting the dependencies is not preferred set `cljr-inject-dependencies-at-jack-in' to nil." nil nil)
 
 (eval-after-load 'cider '(cljr--inject-jack-in-dependencies))
 
 (autoload 'clj-refactor-mode "clj-refactor" "\
 A mode to keep the clj-refactor keybindings.
 
+If called interactively, enable Clj-Refactor mode if ARG is
+positive, and disable it if ARG is zero or negative.  If called
+from Lisp, also enable the mode if ARG is omitted or nil, and
+toggle it if ARG is `toggle'; disable the mode otherwise.
+
 \\{clj-refactor-map}
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "clj-refactor" '("cjr--occurrence-count" "clj" "hydra-cljr-" "*cljr--noninteractive*")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "clj-refactor" '("*cljr--noninteractive*" "cjr--occurrence-count" "clj" "hydra-cljr-")))
 
 ;;;***
 
