@@ -80,6 +80,8 @@
     solarized-theme
 
     super-save
+
+    auto-dim-other-buffers
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -143,7 +145,7 @@
 
 ;; Langauage-specific
 (load "setup-clojure.el")
-(load "setup-js.el")
+;;(load "setup-js.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -186,6 +188,7 @@
     ;; This choice of keybinding leaves cider-macroexpand-1 unbound
     (cljr-add-keybindings-with-prefix "C-c C-m"))
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+(add-hook 'cider-repl-mode-hook #'my-hs-minor-mode)
 
 (global-linum-mode -1)
 
@@ -249,7 +252,11 @@
 
 (setq-default cursor-type '(bar . 3))
 (blink-cursor-mode 1)
-(set-cursor-color "SystemRedColor")
+(set-cursor-color "#FF4500") ;; orange red
+
+(add-hook 'after-init-hook (lambda ()
+  (when (fboundp 'auto-dim-other-buffers-mode)
+    (auto-dim-other-buffers-mode t))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; abbreviations
