@@ -13,3 +13,4 @@ archive-contents
 elpa/archives
 server/
 *backup*
+.cider-repl-history
