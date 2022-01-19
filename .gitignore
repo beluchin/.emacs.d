@@ -1,6 +1,6 @@
 .*
 !.gitignore
-*~$
+*~
 places
 ido.last
 cider-history
