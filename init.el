@@ -270,4 +270,9 @@
 ;; reads the abbreviations file on startup
 (quietly-read-abbrev-file)
 
+;; END abbreviations
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq-default buffer-file-coding-system 'utf-8-unix)
+
 ;;; init.el ends here

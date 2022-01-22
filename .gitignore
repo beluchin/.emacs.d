@@ -1,7 +1,7 @@
-.smex-items
-*~$
+.*
+!.gitignore
+*~
 places
-.recentf
 ido.last
 cider-history
 projectile-bookmarks.eld
@@ -13,4 +13,3 @@ archive-contents
 elpa/archives
 server/
 *backup*
-.cider-repl-history
