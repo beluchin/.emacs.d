@@ -4,9 +4,19 @@
 
 ;; Define package repositories
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; dont use melpa stable
+;; https://www.reddit.com/r/emacs/comments/etikbz/speaking_as_a_package_maintainer_please_do_not/
+(setq package-archives
+      '(("GNU ELPA"     . "https://elpa.gnu.org/packages/")
+        ;;("MELPA Stable" . "https://stable.melpa.org/packages/")
+        ("MELPA"        . "https://melpa.org/packages/"))
+      package-archive-priorities
+      '(;;("MELPA Stable" . 10)
+        ("GNU ELPA"     . 5)
+        ("MELPA"        . 0)))
+        
 ;;(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 
 ;; Load and activate emacs packages. Do this first so that the
@@ -46,6 +56,9 @@
     ;; integration with a Clojure REPL
     ;; https://github.com/clojure-emacs/cider
     cider
+
+    ;; autocompletion
+    company
 
     ;; allow ido usage in as many contexts as possible. see
     ;; customizations/navigation.el line 23 for a description
@@ -156,7 +169,7 @@
  '(custom-safe-themes
    '("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" default))
  '(package-selected-packages
-   '(dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell use-package)))
+   '(editorconfig systemtap-mode dashboard-hackernews cider-hydra dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -248,6 +261,8 @@
 ;;; switch to last buffer
 (global-set-key (kbd "C-c b") #'mode-line-other-buffer)
 
+(global-set-key (kbd "C-x x t") 'toggle-truncate-lines)
+
 (load-theme 'solarized-light-high-contrast t)
 
 (setq-default cursor-type '(bar . 3))
@@ -275,4 +290,49 @@
 
 (setq-default buffer-file-coding-system 'utf-8-unix)
 
-;;; init.el ends here
+;; https://docs.cider.mx/cider/troubleshooting.html#pressing-ret-in-the-repl-does-not-evaluate-forms
+(define-key paredit-mode-map (kbd "RET") nil)
+
+;; decouple kill-ring from system keyboard
+(setq x-select-enable-clipboard nil)
+;; copy/paste from the system keyboard
+(global-set-key (kbd "C-c w") 'clipboard-kill-ring-save)
+(global-set-key (kbd "C-c y") 'clipboard-yank)
+
+;; company
+(global-company-mode)
+;;
+(setq company-idle-delay nil) ; never start completions automatically
+(global-set-key (kbd "M-TAB") #'company-complete) ; use M-TAB, a.k.a. C-M-i, as manual trigger
+;;
+(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
+;; fuzzy matching
+(add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+(add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
+
+;; copilot.el
+(add-to-list 'load-path "c:/tools/copilot.el")
+(require 'copilot)
+;;
+(add-hook 'prog-mode-hook 'copilot-mode)
+;; with company
+(with-eval-after-load 'company
+  ;; disable inline previews
+  (delq 'company-preview-if-just-one-frontend company-frontends))
+(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+(define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+; complete by copilot first, then company-mode
+(defun my-tab ()
+  (interactive)
+  (or (copilot-accept-completion)
+      (company-indent-or-complete-common nil)))
+; modify company-mode behaviors
+(with-eval-after-load 'company
+  ; disable inline previews
+  (delq 'company-preview-if-just-one-frontend company-frontends)
+  ; enable tab completion
+  (define-key company-mode-map (kbd "<tab>") 'my-tab)
+  (define-key company-mode-map (kbd "TAB") 'my-tab)
+  (define-key company-active-map (kbd "<tab>") 'my-tab)
+  (define-key company-active-map (kbd "TAB") 'my-tab))
+
