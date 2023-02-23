@@ -10,6 +10,7 @@ auto-save-list
 backups
 melpa-stable
 archive-contents
-elpa/archives
+network-security.data
+elpa/
 server/
 *backup*
