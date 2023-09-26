@@ -10,6 +10,8 @@ auto-save-list
 backups
 melpa-stable
 archive-contents
-elpa/archives
 server/
 *backup*
+elpa/
+url/
+straight/
