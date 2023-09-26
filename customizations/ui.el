@@ -8,7 +8,8 @@
 (menu-bar-mode -1)
 
 ;; Show line numbers
-(global-linum-mode)
+;;(global-linum-mode)
+(global-display-line-numbers-mode 1) ;; Enable line numbers globally
 
 ;; You can uncomment this to remove the graphical toolbar at the top. After
 ;; awhile, you won't need the toolbar.
@@ -29,7 +30,7 @@
 (load-theme 'tomorrow-night-bright t)
 
 ;; increase font size for better readability
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 115)
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height

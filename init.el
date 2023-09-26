@@ -203,7 +203,7 @@
 (add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
 (add-hook 'cider-repl-mode-hook #'my-hs-minor-mode)
 
-(global-linum-mode -1)
+(global-display-line-numbers-mode 1) ;; Enable line numbers globally
 
 (column-number-mode 1)
 
@@ -246,6 +246,7 @@
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (projectile-mode +1)
+(setq projectile-create-missing-test-files t)
 
 (use-package super-save
   :ensure t
