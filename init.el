@@ -11,12 +11,13 @@
 (setq package-archives
       '(("GNU ELPA"     . "https://elpa.gnu.org/packages/")
         ;;("MELPA Stable" . "https://stable.melpa.org/packages/")
-        ("MELPA"        . "https://melpa.org/packages/"))
+        ("MELPA"        . "https://melpa.org/packages/")
+        ("nongnu"       . "https://elpa.nongnu.org/nongnu/"))
       package-archive-priorities
       '(;;("MELPA Stable" . 10)
         ("GNU ELPA"     . 5)
         ("MELPA"        . 0)))
-        
+
 ;;(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 
 ;; Load and activate emacs packages. Do this first so that the
@@ -169,7 +170,7 @@
  '(custom-safe-themes
    '("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" default))
  '(package-selected-packages
-   '(kibit-helper editorconfig systemtap-mode dashboard-hackernews cider-hydra dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell use-package)))
+   '(sweeprolog kibit-helper editorconfig systemtap-mode dashboard-hackernews cider-hydra dashboard-project-status transient parseclj queue spinner magit sesman clojure-snippets flycheck-pos-tip flycheck-clojure clj-refactor tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -339,3 +340,8 @@
 
 ;; font
 (set-face-attribute 'default nil :height 150)
+
+;; prolog
+(require 'sweeprolog)
+(add-to-list 'auto-mode-alist '("\\.plt?\\'"  . sweeprolog-mode))
+
